@@ -2,18 +2,25 @@
 import React, { createContext, useState, useContext } from "react";
 
 export type ApplicationStep = "login" | "personalDetails" | "payment" | "examBooking" | "complete";
+export type LeadType = "parent" | "student";
 
 interface PersonalDetailsType {
-  name: string;
+  leadType: LeadType;
+  parentName: string;
+  parentNumber: string;
+  studentName: string;
+  studentNumber: string;
   email: string;
-  phone: string;
-  dob: Date | undefined;
-  gender: string;
-  address: string;
-  city: string;
   state: string;
-  pincode: string;
-  qualification: string;
+  district: string;
+  language: string;
+  education: string;
+  dob?: Date;
+  gender?: string;
+  address?: string;
+  city?: string;
+  pincode?: string;
+  qualification?: string;
 }
 
 interface ExamSlotType {
@@ -35,14 +42,20 @@ interface ApplicationContextType {
 }
 
 const defaultPersonalDetails: PersonalDetailsType = {
-  name: "",
+  leadType: "student",
+  parentName: "",
+  parentNumber: "",
+  studentName: "",
+  studentNumber: "",
   email: "",
-  phone: "",
+  state: "",
+  district: "",
+  language: "",
+  education: "",
   dob: undefined,
   gender: "",
   address: "",
   city: "",
-  state: "",
   pincode: "",
   qualification: "",
 };
