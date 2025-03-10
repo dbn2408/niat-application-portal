@@ -51,7 +51,7 @@ const ExamBooking = () => {
   React.useEffect(() => {
     if (!isAuthenticated) {
       navigate("/");
-    } else if (!personalDetails.name || !personalDetails.email) {
+    } else if (!personalDetails.studentName || !personalDetails.email) {
       navigate("/personal-details");
     } else if (!paymentComplete) {
       navigate("/payment");

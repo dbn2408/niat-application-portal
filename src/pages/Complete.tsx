@@ -20,7 +20,7 @@ const Complete = () => {
   React.useEffect(() => {
     if (!isAuthenticated) {
       navigate("/");
-    } else if (!personalDetails.name || !personalDetails.email) {
+    } else if (!personalDetails.studentName || !personalDetails.email) {
       navigate("/personal-details");
     } else if (!paymentComplete) {
       navigate("/payment");
@@ -56,9 +56,9 @@ const Complete = () => {
               <User className="h-5 w-5 text-niat-500 mt-0.5" />
               <div>
                 <div className="text-sm font-medium">Applicant</div>
-                <div className="font-medium">{personalDetails.name}</div>
+                <div className="font-medium">{personalDetails.studentName}</div>
                 <div className="text-sm text-gray-500">{personalDetails.email}</div>
-                <div className="text-sm text-gray-500">{personalDetails.phone}</div>
+                <div className="text-sm text-gray-500">{personalDetails.studentNumber}</div>
               </div>
             </div>
 
