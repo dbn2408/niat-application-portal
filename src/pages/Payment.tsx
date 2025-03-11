@@ -6,26 +6,29 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card, CardContent } from "@/components/ui/card";
-import { CreditCard, Smartphone, CreditCardIcon } from "lucide-react";
+import { CreditCard, Smartphone, CreditCardIcon, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useApplication } from "@/context/ApplicationContext";
 import AppLayout from "@/components/AppLayout";
+import { format } from "date-fns";
 
 const Payment = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { setPaymentComplete, isAuthenticated, personalDetails } = useApplication();
+  const { setPaymentComplete, isAuthenticated, personalDetails, examSlot } = useApplication();
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Redirect if not authenticated or missing personal details
+  // Redirect if not authenticated, missing personal details, or exam slot not selected
   React.useEffect(() => {
     if (!isAuthenticated) {
       navigate("/");
     } else if (!personalDetails.studentName || !personalDetails.email) {
       navigate("/personal-details");
+    } else if (!examSlot.date) {
+      navigate("/exam-booking");
     }
-  }, [isAuthenticated, navigate, personalDetails]);
+  }, [isAuthenticated, navigate, personalDetails, examSlot]);
 
   // Card payment state
   const [cardDetails, setCardDetails] = useState({
@@ -71,18 +74,37 @@ const Payment = () => {
         title: "Payment Successful",
         description: "Your application fee has been paid successfully.",
       });
-      navigate("/exam-booking");
+      navigate("/complete");
     }, 1500);
   };
 
   return (
-    <AppLayout activeStep={2}>
+    <AppLayout activeStep={3}>
       <div className="space-y-6">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight">Application Fee Payment</h2>
+          <h2 className="text-2xl font-bold tracking-tight">Payment</h2>
           <p className="text-gray-500">
-            Pay the application fee of ₹600 to proceed with your NIAT admission process.
+            Complete the payment of ₹600 to confirm your exam slot.
           </p>
+        </div>
+
+        <div className="bg-niat-50 p-5 rounded-lg">
+          <h3 className="font-medium flex items-center gap-2 mb-3">
+            <CheckCircle2 className="h-5 w-5 text-niat-500" />
+            <span>Exam Slot Selected</span>
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <div className="text-sm font-medium">Date</div>
+              <div className="font-medium">
+                {examSlot.date && format(examSlot.date, "EEEE, MMMM dd, yyyy")}
+              </div>
+            </div>
+            <div>
+              <div className="text-sm font-medium">Time</div>
+              <div className="font-medium">{examSlot.time}</div>
+            </div>
+          </div>
         </div>
 
         <Card className="border-none bg-muted/30">

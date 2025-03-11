@@ -35,13 +35,19 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, activeStep }) => {
               <div className="step">
                 {activeStep > 2 ? <Check size={20} className="step-icon" /> : 2}
               </div>
-              <p className="text-center mt-2">Pay Application Fee</p>
+              <p className="text-center mt-2">Exam Booking</p>
             </div>
             <div className={`step-item ${activeStep >= 3 ? "active" : ""} ${activeStep > 3 ? "complete" : ""}`}>
               <div className="step">
                 {activeStep > 3 ? <Check size={20} className="step-icon" /> : 3}
               </div>
-              <p className="text-center mt-2">Book Exam Slot</p>
+              <p className="text-center mt-2">Payment</p>
+            </div>
+            <div className={`step-item ${activeStep >= 4 ? "active" : ""} ${activeStep > 4 ? "complete" : ""}`}>
+              <div className="step">
+                {activeStep > 4 ? <Check size={20} className="step-icon" /> : 4}
+              </div>
+              <p className="text-center mt-2">Complete</p>
             </div>
           </div>
         </div>

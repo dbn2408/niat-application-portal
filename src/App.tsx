@@ -7,8 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ApplicationProvider } from "./context/ApplicationContext";
 import Index from "./pages/Index";
 import PersonalDetails from "./pages/PersonalDetails";
-import Payment from "./pages/Payment";
 import ExamBooking from "./pages/ExamBooking";
+import Payment from "./pages/Payment";
 import Complete from "./pages/Complete";
 import NotFound from "./pages/NotFound";
 
@@ -24,8 +24,8 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/personal-details" element={<PersonalDetails />} />
-            <Route path="/payment" element={<Payment />} />
             <Route path="/exam-booking" element={<ExamBooking />} />
+            <Route path="/payment" element={<Payment />} />
             <Route path="/complete" element={<Complete />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
