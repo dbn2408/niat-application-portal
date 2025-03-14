@@ -56,7 +56,9 @@ h1, h2, h3, h4, h5, h6 {
   @apply relative p-3 rounded-md font-medium transition-all;
   background-color: #f9e8e8;
   border: 1px solid #f3d1d1;
-  min-width: 180px;
+  flex: 1;
+  min-width: 140px;
+  max-width: 200px;
 }
 
 .step-rectangle.active {
@@ -85,4 +87,12 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #991b1b;
   border-radius: 2px;
   transition: width 0.3s ease;
+}
+
+/* Responsive adjustments for step rectangles */
+@media (max-width: 768px) {
+  .step-rectangle {
+    min-width: 100%;
+    margin-bottom: 0.5rem;
+  }
 }

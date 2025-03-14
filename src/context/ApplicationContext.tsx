@@ -1,7 +1,7 @@
 
 import React, { createContext, useState, useContext } from "react";
 
-export type ApplicationStep = "login" | "personalDetails" | "payment" | "examBooking" | "complete";
+export type ApplicationStep = "login" | "personalDetails" | "examBooking" | "payment" | "takeExam" | "campusConnect" | "complete";
 export type LeadType = "parent" | "student";
 
 interface PersonalDetailsType {
@@ -21,11 +21,20 @@ interface PersonalDetailsType {
   city?: string;
   pincode?: string;
   qualification?: string;
+  stream?: string;
+  yearOf12thCompletion?: string;
 }
 
 interface ExamSlotType {
   date: Date | undefined;
   time: string;
+  examType?: "immediate" | "scheduled";
+}
+
+interface CampusConnectType {
+  campusCenter?: string;
+  date?: Date;
+  time?: string;
 }
 
 interface ApplicationContextType {
@@ -39,6 +48,10 @@ interface ApplicationContextType {
   setPaymentComplete: (value: boolean) => void;
   examSlot: ExamSlotType;
   setExamSlot: (slot: ExamSlotType) => void;
+  examCompleted: boolean;
+  setExamCompleted: (value: boolean) => void;
+  campusConnect: CampusConnectType;
+  setCampusConnect: (details: CampusConnectType) => void;
 }
 
 const defaultPersonalDetails: PersonalDetailsType = {
@@ -58,9 +71,18 @@ const defaultPersonalDetails: PersonalDetailsType = {
   city: "",
   pincode: "",
   qualification: "",
+  stream: "",
+  yearOf12thCompletion: "",
 };
 
 const defaultExamSlot: ExamSlotType = {
+  date: undefined,
+  time: "",
+  examType: undefined,
+};
+
+const defaultCampusConnect: CampusConnectType = {
+  campusCenter: "",
   date: undefined,
   time: "",
 };
@@ -73,6 +95,8 @@ export const ApplicationProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const [personalDetails, setPersonalDetails] = useState<PersonalDetailsType>(defaultPersonalDetails);
   const [paymentComplete, setPaymentComplete] = useState(false);
   const [examSlot, setExamSlot] = useState<ExamSlotType>(defaultExamSlot);
+  const [examCompleted, setExamCompleted] = useState(false);
+  const [campusConnect, setCampusConnect] = useState<CampusConnectType>(defaultCampusConnect);
 
   return (
     <ApplicationContext.Provider
@@ -87,6 +111,10 @@ export const ApplicationProvider: React.FC<{ children: React.ReactNode }> = ({ c
         setPaymentComplete,
         examSlot,
         setExamSlot,
+        examCompleted,
+        setExamCompleted,
+        campusConnect,
+        setCampusConnect,
       }}
     >
       {children}

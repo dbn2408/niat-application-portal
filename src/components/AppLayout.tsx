@@ -1,7 +1,7 @@
 
 import React from "react";
 import { useApplication } from "@/context/ApplicationContext";
-import { Circle } from "lucide-react";
+import { Circle, CheckCircle } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 
 interface AppLayoutProps {
@@ -10,8 +10,16 @@ interface AppLayoutProps {
 }
 
 const AppLayout: React.FC<AppLayoutProps> = ({ children, activeStep }) => {
-  // Calculate progress percentage based on active step
-  const progressPercentage = (activeStep / 4) * 100;
+  // Calculate progress percentage based on active step (now out of 5 steps)
+  const progressPercentage = (activeStep / 5) * 100;
+
+  const steps = [
+    { id: 1, name: "Login" },
+    { id: 2, name: "Personal Details" },
+    { id: 3, name: "Exam & Payment" },
+    { id: 4, name: "Take Exam" },
+    { id: 5, name: "Campus Connect" }
+  ];
 
   return (
     <div className="min-h-screen bg-niat-50 flex flex-col">
@@ -35,63 +43,40 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, activeStep }) => {
         
         <div className="flex justify-center">
           <div className="flex flex-col md:flex-row w-full px-4 justify-between md:gap-4 gap-3">
-            <div className={`step-rectangle ${activeStep >= 1 ? "active" : ""} ${activeStep > 1 ? "complete" : ""}`}>
-              <div className="flex items-center gap-2">
-                <div className="step-progress">
-                  {activeStep > 1 ? (
-                    <Circle className="h-6 w-6 fill-white stroke-primary" />
-                  ) : activeStep === 1 ? (
-                    <Circle className="h-6 w-6 fill-primary stroke-primary" />
-                  ) : (
-                    <Circle className="h-6 w-6 stroke-gray-400" />
-                  )}
+            {steps.map((step) => (
+              <div 
+                key={step.id}
+                className={`step-rectangle ${activeStep >= step.id ? "active" : ""} ${activeStep > step.id ? "complete" : ""}`}
+              >
+                <div className="flex items-center gap-2">
+                  <div className="step-progress">
+                    {activeStep > step.id ? (
+                      <CheckCircle className="h-6 w-6 text-primary" />
+                    ) : activeStep === step.id ? (
+                      <Circle className="h-6 w-6 fill-primary stroke-primary" />
+                    ) : (
+                      <Circle className="h-6 w-6 stroke-gray-400" />
+                    )}
+                  </div>
+                  <span>{step.name}</span>
                 </div>
-                <span>Personal Details</span>
+                {step.id === 2 && (
+                  <div className="text-xs text-gray-600 pl-8 mt-1">
+                    Lead Type, Name, Email, Personal Info
+                  </div>
+                )}
+                {step.id === 3 && (
+                  <div className="text-xs text-gray-600 pl-8 mt-1">
+                    Select Exam Type, Schedule, Payment
+                  </div>
+                )}
+                {step.id === 5 && (
+                  <div className="text-xs text-gray-600 pl-8 mt-1">
+                    Select Campus, Date & Time
+                  </div>
+                )}
               </div>
-            </div>
-            
-            <div className={`step-rectangle ${activeStep >= 2 ? "active" : ""} ${activeStep > 2 ? "complete" : ""}`}>
-              <div className="flex items-center gap-2">
-                <div className="step-progress">
-                  {activeStep > 2 ? (
-                    <Circle className="h-6 w-6 fill-white stroke-primary" />
-                  ) : activeStep === 2 ? (
-                    <Circle className="h-6 w-6 fill-primary stroke-primary" />
-                  ) : (
-                    <Circle className="h-6 w-6 stroke-gray-400" />
-                  )}
-                </div>
-                <span>Exam Booking</span>
-              </div>
-            </div>
-            
-            <div className={`step-rectangle ${activeStep >= 3 ? "active" : ""} ${activeStep > 3 ? "complete" : ""}`}>
-              <div className="flex items-center gap-2">
-                <div className="step-progress">
-                  {activeStep > 3 ? (
-                    <Circle className="h-6 w-6 fill-white stroke-primary" />
-                  ) : activeStep === 3 ? (
-                    <Circle className="h-6 w-6 fill-primary stroke-primary" />
-                  ) : (
-                    <Circle className="h-6 w-6 stroke-gray-400" />
-                  )}
-                </div>
-                <span>Payment</span>
-              </div>
-            </div>
-            
-            <div className={`step-rectangle ${activeStep >= 4 ? "active" : ""}`}>
-              <div className="flex items-center gap-2">
-                <div className="step-progress">
-                  {activeStep === 4 ? (
-                    <Circle className="h-6 w-6 fill-primary stroke-primary" />
-                  ) : (
-                    <Circle className="h-6 w-6 stroke-gray-400" />
-                  )}
-                </div>
-                <span>Complete</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
