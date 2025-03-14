@@ -14,9 +14,13 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, activeStep }) => {
       <header className="bg-white shadow-sm py-4">
         <div className="container">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="bg-niat-500 text-white p-1 rounded text-xl font-bold">NIAT</span>
-              <span className="text-gray-800 font-medium">Application Portal</span>
+            <div className="flex items-center gap-3">
+              <img
+                src="/lovable-uploads/6ed5eb14-b93f-42a2-adc2-1c8868c306e3.png"
+                alt="NIAT Logo"
+                className="h-12"
+              />
+              <span className="text-gray-800 font-medium hidden md:inline">Application Portal</span>
             </div>
           </div>
         </div>

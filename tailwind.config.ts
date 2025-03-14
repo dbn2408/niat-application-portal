@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,6 +19,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'playfair': ['Playfair Display', 'serif'],
+				'sans': ['Inter', 'sans-serif']
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -68,7 +73,7 @@ export default {
 					200: '#99c8fb',
 					300: '#66acf9',
 					400: '#3391f8',
-					500: '#991b1b',
+					500: '#991b1b',  // NIAT primary red
 					600: '#7a1616',
 					700: '#5c1111',
 					800: '#3d0b0b',
