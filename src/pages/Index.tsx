@@ -209,8 +209,12 @@ const Index = () => {
       {/* Header - NIAT Clone */}
       <header className="bg-white border-b sticky top-0 z-30">
         <div className="container mx-auto py-4 px-4 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <span className="bg-niat-500 text-white p-1 px-2 rounded text-xl font-bold">NIAT</span>
+          <div className="flex items-center gap-3">
+            <img 
+              src="/lovable-uploads/ed96fbb9-fc0b-493c-a77f-41a96f947096.png" 
+              alt="NIAT Logo" 
+              className="h-12"
+            />
             <span className="text-gray-800 font-medium hidden md:inline">NxtWave Institute of Advanced Technologies</span>
           </div>
           <nav className="hidden md:flex items-center space-x-8">
@@ -233,7 +237,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center">
             <div className="w-full md:w-1/2 mb-10 md:mb-0">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 font-playfair">
                 Become a Tech Leader of Tomorrow
               </h1>
               <p className="text-lg text-gray-700 mb-8 max-w-md">
@@ -260,13 +264,13 @@ const Index = () => {
       {/* Programs Overview */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Advanced Programs</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 font-playfair">Our Advanced Programs</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
               <div className="w-14 h-14 bg-niat-50 rounded-full flex items-center justify-center mb-4">
                 <Code className="h-8 w-8 text-niat-500" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Advanced Programming</h3>
+              <h3 className="text-xl font-bold mb-3 font-playfair">Advanced Programming</h3>
               <p className="text-gray-600 mb-4">Master modern programming languages and frameworks with our industry-aligned curriculum.</p>
               <a href="#" className="text-niat-500 font-medium flex items-center">
                 Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -277,7 +281,7 @@ const Index = () => {
               <div className="w-14 h-14 bg-niat-50 rounded-full flex items-center justify-center mb-4">
                 <LampDesk className="h-8 w-8 text-niat-500" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Artificial Intelligence</h3>
+              <h3 className="text-xl font-bold mb-3 font-playfair">Artificial Intelligence</h3>
               <p className="text-gray-600 mb-4">Develop cutting-edge AI applications with hands-on projects and expert mentorship.</p>
               <a href="#" className="text-niat-500 font-medium flex items-center">
                 Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -288,7 +292,7 @@ const Index = () => {
               <div className="w-14 h-14 bg-niat-50 rounded-full flex items-center justify-center mb-4">
                 <Briefcase className="h-8 w-8 text-niat-500" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Career Accelerator</h3>
+              <h3 className="text-xl font-bold mb-3 font-playfair">Career Accelerator</h3>
               <p className="text-gray-600 mb-4">Get placed in top tech companies with our comprehensive placement preparation program.</p>
               <a href="#" className="text-niat-500 font-medium flex items-center">
                 Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -304,6 +308,14 @@ const Index = () => {
           <div className="flex flex-col md:flex-row">
             {/* Left Panel - Campaign Content */}
             <div className="w-full md:w-1/2 bg-gradient-to-br from-primary to-primary/80 text-white p-8">
+              <div className="flex justify-center mb-6">
+                <img 
+                  src="/lovable-uploads/ed96fbb9-fc0b-493c-a77f-41a96f947096.png" 
+                  alt="NIAT Logo" 
+                  className="h-20"
+                />
+              </div>
+              
               {campaign.media && campaign.media.includes('youtube') ? (
                 <div className="aspect-video mb-6">
                   <iframe 
@@ -317,7 +329,7 @@ const Index = () => {
                 <img src={campaign.media} alt="Campaign visual" className="rounded-lg mb-6 w-full" />
               ) : null}
               
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">{campaign.title}</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 font-playfair">{campaign.title}</h2>
               <p className="text-lg mb-6">{campaign.description}</p>
               
               <div className="space-y-4">
@@ -358,7 +370,7 @@ const Index = () => {
             {/* Right Panel - Login Form */}
             <div className="w-full md:w-1/2 p-6">
               <DialogHeader className="mb-4 text-left">
-                <DialogTitle className="text-2xl flex items-center gap-2">
+                <DialogTitle className="text-2xl flex items-center gap-2 font-playfair">
                   <LogIn className="h-5 w-5 text-primary" />
                   Login to Application Portal
                 </DialogTitle>

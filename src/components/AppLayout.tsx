@@ -16,7 +16,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, activeStep }) => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img
-                src="/lovable-uploads/6ed5eb14-b93f-42a2-adc2-1c8868c306e3.png"
+                src="/lovable-uploads/ed96fbb9-fc0b-493c-a77f-41a96f947096.png"
                 alt="NIAT Logo"
                 className="h-12"
               />

@@ -30,11 +30,11 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: '#991b1b',
+					DEFAULT: '#991b1b', // NIAT maroon red from shield logo
 					foreground: 'hsl(var(--primary-foreground))'
 				},
 				secondary: {
-					DEFAULT: '#ffb218',
+					DEFAULT: '#c6a243', // NIAT gold from shield logo
 					foreground: 'hsl(var(--secondary-foreground))'
 				},
 				destructive: {
@@ -68,16 +68,17 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				niat: {
-					50: '#e6f1fe',
-					100: '#cce3fd',
-					200: '#99c8fb',
-					300: '#66acf9',
-					400: '#3391f8',
-					500: '#991b1b',  // NIAT primary red
+					50: '#f9e8e8',
+					100: '#f3d1d1',
+					200: '#e7a3a3',
+					300: '#db7575',
+					400: '#cf4747',
+					500: '#991b1b',  // NIAT primary maroon red
 					600: '#7a1616',
 					700: '#5c1111',
 					800: '#3d0b0b',
 					900: '#1f0606',
+					gold: '#c6a243' // NIAT gold color
 				}
 			},
 			borderRadius: {
