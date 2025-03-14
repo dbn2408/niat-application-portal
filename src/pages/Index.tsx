@@ -1,10 +1,10 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Card, CardContent } from "@/components/ui/card";
 import { LogIn, Lightbulb, Smartphone, ChevronRight, GraduationCap, BookOpen, LampDesk, Code, Users, ArrowRight, Briefcase } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useApplication } from "@/context/ApplicationContext";
@@ -33,96 +33,58 @@ const techFacts = [
   }
 ];
 
-// Campaign content variations
 const campaignContent = [
   {
     id: "default",
-    title: "Begin Your Journey in Tech Excellence",
-    description: "NIAT provides world-class education in cutting-edge technologies, preparing students for the careers of tomorrow.",
+    title: "Begin Your Tech Journey",
+    subtitle: "NIAT provides world-class education in cutting-edge technologies.",
     features: [
-      {
-        icon: <Smartphone className="h-6 w-6" />,
-        title: "Industry-Ready Skills",
-        description: "Curriculum designed with industry partners to ensure relevant skill development"
-      },
-      {
-        icon: <Lightbulb className="h-6 w-6" />,
-        title: "Innovation-Focused",
-        description: "Learn to build innovative solutions to real-world problems"
-      },
-      {
-        icon: <ChevronRight className="h-6 w-6" />,
-        title: "Career Accelerator",
-        description: "Get placed in top tech companies with our placement assistance"
-      }
+      { icon: <Smartphone className="h-6 w-6" />, title: "Industry-Ready Skills" },
+      { icon: <Lightbulb className="h-6 w-6" />, title: "Innovation-Focused" },
+      { icon: <ChevronRight className="h-6 w-6" />, title: "Career Accelerator" }
     ],
-    media: null // No media for default
+    media: null
   },
   {
     id: "social",
-    title: "Tech Leaders Start at NIAT",
-    description: "Join our exclusive program designed for the leaders of tomorrow's tech revolution.",
+    title: "Tech Leaders Start Here",
+    subtitle: "Join our exclusive program designed for tomorrow's tech innovators.",
     features: [
-      {
-        icon: <Users className="h-6 w-6" />,
-        title: "Networking Opportunities",
-        description: "Connect with industry professionals and build your career network"
-      },
-      {
-        icon: <Briefcase className="h-6 w-6" />,
-        title: "Internship Guaranteed",
-        description: "All students receive internship placements with top companies"
-      },
-      {
-        icon: <ArrowRight className="h-6 w-6" />,
-        title: "Fast-Track Learning",
-        description: "Accelerated curriculum to get you job-ready in record time"
-      }
+      { icon: <Users className="h-6 w-6" />, title: "Networking Opportunities" },
+      { icon: <Briefcase className="h-6 w-6" />, title: "Guaranteed Internships" },
+      { icon: <ArrowRight className="h-6 w-6" />, title: "Fast-Track Learning" }
     ],
     media: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2670&auto=format&fit=crop"
   },
   {
     id: "email",
     title: "Special Enrollment Program",
-    description: "You've been selected for our exclusive fast-track program with special pricing.",
+    subtitle: "You've been selected for our exclusive fast-track opportunity.",
     features: [
-      {
-        icon: <GraduationCap className="h-6 w-6" />,
-        title: "Elite Mentorship",
-        description: "One-on-one guidance from industry veterans"
-      },
-      {
-        icon: <BookOpen className="h-6 w-6" />,
-        title: "Advanced Curriculum",
-        description: "Access to specialized courses not available to regular students"
-      },
-      {
-        icon: <LampDesk className="h-6 w-6" />,
-        title: "Research Opportunities",
-        description: "Work on real-world research projects with our faculty"
-      }
+      { icon: <GraduationCap className="h-6 w-6" />, title: "Elite Mentorship" },
+      { icon: <BookOpen className="h-6 w-6" />, title: "Advanced Curriculum" },
+      { icon: <LampDesk className="h-6 w-6" />, title: "Research Opportunities" }
     ],
     media: "https://www.youtube.com/embed/dQw4w9WgXcQ"
   }
 ];
 
-// OTP Facts
 const otpFacts = [
   {
     title: "Multi-Factor Authentication",
-    description: "OTPs are a crucial part of MFA systems, adding an additional layer of security beyond passwords."
+    description: "OTPs add an additional layer of security beyond passwords."
   },
   {
     title: "Time-Based OTPs",
-    description: "Modern OTPs use time-based algorithms that make them valid only for a short period, typically 30-60 seconds."
+    description: "Modern OTPs are valid only for a short period, typically 30-60 seconds."
   },
   {
     title: "Biometric Integration",
-    description: "Next-gen authentication combines OTPs with biometric verification for enhanced security."
+    description: "Next-gen authentication combines OTPs with biometric verification."
   },
   {
     title: "Passwordless Future",
-    description: "Many security experts predict OTPs and biometrics will eventually replace traditional passwords completely."
+    description: "OTPs and biometrics will eventually replace traditional passwords."
   }
 ];
 
@@ -137,7 +99,6 @@ const Index = () => {
   const [currentFactIndex, setCurrentFactIndex] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   
-  // Determine which campaign content to show (could be based on URL param in real implementation)
   const [activeCampaign, setActiveCampaign] = useState("default");
   const campaign = campaignContent.find(c => c.id === activeCampaign) || campaignContent[0];
 
@@ -153,7 +114,6 @@ const Index = () => {
 
     setIsLoading(true);
     
-    // Simulate API call
     setTimeout(() => {
       setOtpSent(true);
       setIsLoading(false);
@@ -176,7 +136,6 @@ const Index = () => {
 
     setIsLoading(true);
     
-    // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
       setIsAuthenticated(true);
@@ -188,14 +147,12 @@ const Index = () => {
     }, 1000);
   };
 
-  // For campaign selection (in a real app would be coming from URL params)
   const handleChangeCampaign = (id) => {
     setActiveCampaign(id);
   };
 
   React.useEffect(() => {
     if (otpSent) {
-      // Change tech fact every 5 seconds
       const interval = setInterval(() => {
         setCurrentFactIndex((prev) => (prev + 1) % otpFacts.length);
       }, 5000);
@@ -206,7 +163,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-niat-50 flex flex-col">
-      {/* Header - NIAT Clone */}
       <header className="bg-primary text-white border-b sticky top-0 z-30">
         <div className="container mx-auto py-4 px-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
@@ -232,7 +188,6 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Hero Section */}
       <section className="bg-gradient-to-br from-niat-100 to-niat-200 py-16">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center">
@@ -261,7 +216,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Programs Overview */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 font-playfair text-primary">Our Advanced Programs</h2>
@@ -302,52 +256,60 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Apply Now Modal */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogContent className="sm:max-w-[900px] p-0 overflow-hidden">
           <div className="flex flex-col md:flex-row">
-            {/* Left Panel - Campaign Content */}
-            <div className="w-full md:w-1/2 bg-gradient-to-br from-niat-600 to-niat-500 text-white p-8">
-              <div className="flex justify-center mb-6">
+            <div className="w-full md:w-1/2 bg-gradient-to-br from-niat-600 to-niat-500 text-white p-6">
+              <div className="flex justify-center mb-4">
                 <img 
                   src="/lovable-uploads/ed96fbb9-fc0b-493c-a77f-41a96f947096.png" 
                   alt="NIAT Logo" 
-                  className="h-20"
+                  className="h-16"
                 />
               </div>
               
-              {campaign.media && campaign.media.includes('youtube') ? (
-                <div className="aspect-video mb-6">
-                  <iframe 
-                    src={campaign.media} 
-                    className="w-full h-full rounded" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullScreen
-                  ></iframe>
+              {campaign.media && (
+                <div className="mb-4">
+                  {campaign.media.includes('youtube') ? (
+                    <div className="rounded-lg overflow-hidden">
+                      <AspectRatio ratio={16/9}>
+                        <iframe 
+                          src={campaign.media} 
+                          className="w-full h-full" 
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                          allowFullScreen
+                        ></iframe>
+                      </AspectRatio>
+                    </div>
+                  ) : (
+                    <AspectRatio ratio={16/9}>
+                      <img 
+                        src={campaign.media} 
+                        alt="Campaign visual" 
+                        className="rounded-lg object-cover w-full h-full"
+                      />
+                    </AspectRatio>
+                  )}
                 </div>
-              ) : campaign.media ? (
-                <img src={campaign.media} alt="Campaign visual" className="rounded-lg mb-6 w-full" />
-              ) : null}
+              )}
               
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 font-playfair">{campaign.title}</h2>
-              <p className="text-lg mb-6">{campaign.description}</p>
+              <h2 className="text-2xl font-bold mb-2 font-playfair">{campaign.title}</h2>
+              <p className="text-white/90 mb-4">{campaign.subtitle}</p>
               
-              <div className="space-y-4">
+              <div className="grid grid-cols-1 gap-2">
                 {campaign.features.map((feature, index) => (
-                  <div key={index} className="flex items-start space-x-3">
+                  <div key={index} className="flex items-center space-x-3">
                     <div className="bg-white/10 p-2 rounded-full">
                       {feature.icon}
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg">{feature.title}</h3>
-                      <p className="text-white/80">{feature.description}</p>
+                      <h3 className="font-medium">{feature.title}</h3>
                     </div>
                   </div>
                 ))}
               </div>
               
-              {/* Campaign switcher - for demo purposes only */}
-              <div className="mt-6 pt-6 border-t border-white/20">
+              <div className="mt-4 pt-4 border-t border-white/20">
                 <p className="text-sm text-white/60 mb-2">Demo: Select campaign type</p>
                 <div className="flex space-x-2">
                   {campaignContent.map(c => (
@@ -367,7 +329,6 @@ const Index = () => {
               </div>
             </div>
             
-            {/* Right Panel - Login Form */}
             <div className="w-full md:w-1/2 p-6 bg-niat-50">
               <DialogHeader className="mb-4 text-left">
                 <DialogTitle className="text-2xl flex items-center gap-2 font-playfair text-primary">
@@ -426,7 +387,6 @@ const Index = () => {
                     </p>
                   </div>
                   
-                  {/* OTP Tech Fact Card */}
                   <div className="mt-6 bg-niat-100 p-4 rounded-lg border border-niat-200">
                     <div className="flex items-start gap-3">
                       <div className="bg-secondary p-2 rounded-full">
