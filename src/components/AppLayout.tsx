@@ -1,7 +1,8 @@
 
 import React from "react";
 import { useApplication } from "@/context/ApplicationContext";
-import { Check } from "lucide-react";
+import { Circle } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -9,6 +10,9 @@ interface AppLayoutProps {
 }
 
 const AppLayout: React.FC<AppLayoutProps> = ({ children, activeStep }) => {
+  // Calculate progress percentage based on active step
+  const progressPercentage = (activeStep / 4) * 100;
+
   return (
     <div className="min-h-screen bg-niat-50 flex flex-col">
       <header className="bg-primary text-white shadow-sm py-4">
@@ -27,38 +31,73 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, activeStep }) => {
       </header>
 
       <div className="container mt-8 mb-4">
+        <Progress value={progressPercentage} className="mb-6 h-2" />
+        
         <div className="flex justify-center">
-          <div className="flex flex-col md:flex-row w-full px-4 justify-center md:gap-0 gap-8">
-            <div className={`step-item ${activeStep >= 1 ? "active" : ""} ${activeStep > 1 ? "complete" : ""}`}>
-              <div className="step">
-                {activeStep > 1 ? <Check size={20} className="step-icon" /> : 1}
+          <div className="flex flex-col md:flex-row w-full px-4 justify-between md:gap-4 gap-3">
+            <div className={`step-rectangle ${activeStep >= 1 ? "active" : ""} ${activeStep > 1 ? "complete" : ""}`}>
+              <div className="flex items-center gap-2">
+                <div className="step-progress">
+                  {activeStep > 1 ? (
+                    <Circle className="h-6 w-6 fill-white stroke-primary" />
+                  ) : activeStep === 1 ? (
+                    <Circle className="h-6 w-6 fill-primary stroke-primary" />
+                  ) : (
+                    <Circle className="h-6 w-6 stroke-gray-400" />
+                  )}
+                </div>
+                <span>Personal Details</span>
               </div>
-              <p className="text-center mt-2 text-gray-700">Personal Details</p>
             </div>
-            <div className={`step-item ${activeStep >= 2 ? "active" : ""} ${activeStep > 2 ? "complete" : ""}`}>
-              <div className="step">
-                {activeStep > 2 ? <Check size={20} className="step-icon" /> : 2}
+            
+            <div className={`step-rectangle ${activeStep >= 2 ? "active" : ""} ${activeStep > 2 ? "complete" : ""}`}>
+              <div className="flex items-center gap-2">
+                <div className="step-progress">
+                  {activeStep > 2 ? (
+                    <Circle className="h-6 w-6 fill-white stroke-primary" />
+                  ) : activeStep === 2 ? (
+                    <Circle className="h-6 w-6 fill-primary stroke-primary" />
+                  ) : (
+                    <Circle className="h-6 w-6 stroke-gray-400" />
+                  )}
+                </div>
+                <span>Exam Booking</span>
               </div>
-              <p className="text-center mt-2 text-gray-700">Exam Booking</p>
             </div>
-            <div className={`step-item ${activeStep >= 3 ? "active" : ""} ${activeStep > 3 ? "complete" : ""}`}>
-              <div className="step">
-                {activeStep > 3 ? <Check size={20} className="step-icon" /> : 3}
+            
+            <div className={`step-rectangle ${activeStep >= 3 ? "active" : ""} ${activeStep > 3 ? "complete" : ""}`}>
+              <div className="flex items-center gap-2">
+                <div className="step-progress">
+                  {activeStep > 3 ? (
+                    <Circle className="h-6 w-6 fill-white stroke-primary" />
+                  ) : activeStep === 3 ? (
+                    <Circle className="h-6 w-6 fill-primary stroke-primary" />
+                  ) : (
+                    <Circle className="h-6 w-6 stroke-gray-400" />
+                  )}
+                </div>
+                <span>Payment</span>
               </div>
-              <p className="text-center mt-2 text-gray-700">Payment</p>
             </div>
-            <div className={`step-item ${activeStep >= 4 ? "active" : ""} ${activeStep > 4 ? "complete" : ""}`}>
-              <div className="step">
-                {activeStep > 4 ? <Check size={20} className="step-icon" /> : 4}
+            
+            <div className={`step-rectangle ${activeStep >= 4 ? "active" : ""}`}>
+              <div className="flex items-center gap-2">
+                <div className="step-progress">
+                  {activeStep === 4 ? (
+                    <Circle className="h-6 w-6 fill-primary stroke-primary" />
+                  ) : (
+                    <Circle className="h-6 w-6 stroke-gray-400" />
+                  )}
+                </div>
+                <span>Complete</span>
               </div>
-              <p className="text-center mt-2 text-gray-700">Complete</p>
             </div>
           </div>
         </div>
       </div>
 
       <main className="flex-1 container mb-8">
-        <div className="bg-white rounded-lg shadow-sm border border-niat-100 p-6 max-w-4xl mx-auto">
+        <div className="bg-niat-100 rounded-lg shadow-sm border border-niat-200 p-6 max-w-4xl mx-auto">
           {children}
         </div>
       </main>
