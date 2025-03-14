@@ -205,9 +205,9 @@ const Index = () => {
   }, [otpSent]);
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-niat-50 flex flex-col">
       {/* Header - NIAT Clone */}
-      <header className="bg-white border-b sticky top-0 z-30">
+      <header className="bg-primary text-white border-b sticky top-0 z-30">
         <div className="container mx-auto py-4 px-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
             <img 
@@ -215,16 +215,16 @@ const Index = () => {
               alt="NIAT Logo" 
               className="h-12"
             />
-            <span className="text-gray-800 font-medium hidden md:inline">NxtWave Institute of Advanced Technologies</span>
+            <span className="text-white font-medium hidden md:inline">NxtWave Institute of Advanced Technologies</span>
           </div>
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-gray-700 hover:text-niat-500">Home</a>
-            <a href="#" className="text-gray-700 hover:text-niat-500">Programs</a>
-            <a href="#" className="text-gray-700 hover:text-niat-500">About</a>
-            <a href="#" className="text-gray-700 hover:text-niat-500">Contact</a>
+            <a href="#" className="text-white/90 hover:text-white hover:underline">Home</a>
+            <a href="#" className="text-white/90 hover:text-white hover:underline">Programs</a>
+            <a href="#" className="text-white/90 hover:text-white hover:underline">About</a>
+            <a href="#" className="text-white/90 hover:text-white hover:underline">Contact</a>
           </nav>
           <Button 
-            className="bg-niat-500 hover:bg-niat-600"
+            className="bg-secondary hover:bg-secondary/90 text-primary"
             onClick={() => setModalOpen(true)}
           >
             Apply Now
@@ -233,18 +233,18 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-50 to-slate-100 py-16">
+      <section className="bg-gradient-to-br from-niat-100 to-niat-200 py-16">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center">
             <div className="w-full md:w-1/2 mb-10 md:mb-0">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 font-playfair">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-primary font-playfair">
                 Become a Tech Leader of Tomorrow
               </h1>
               <p className="text-lg text-gray-700 mb-8 max-w-md">
                 NIAT offers cutting-edge education in advanced technologies, preparing you for high-demand careers in the digital economy.
               </p>
               <Button 
-                className="bg-niat-500 hover:bg-niat-600 text-lg px-8 py-6"
+                className="bg-primary hover:bg-primary/90 text-lg px-8 py-6"
                 onClick={() => setModalOpen(true)}
               >
                 Apply Now <ArrowRight className="ml-2 h-5 w-5" />
@@ -264,36 +264,36 @@ const Index = () => {
       {/* Programs Overview */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 font-playfair">Our Advanced Programs</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 font-playfair text-primary">Our Advanced Programs</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-              <div className="w-14 h-14 bg-niat-50 rounded-full flex items-center justify-center mb-4">
+            <div className="bg-niat-50 p-6 rounded-lg shadow-md border border-niat-100 hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 bg-niat-200 rounded-full flex items-center justify-center mb-4">
                 <Code className="h-8 w-8 text-niat-500" />
               </div>
-              <h3 className="text-xl font-bold mb-3 font-playfair">Advanced Programming</h3>
-              <p className="text-gray-600 mb-4">Master modern programming languages and frameworks with our industry-aligned curriculum.</p>
+              <h3 className="text-xl font-bold mb-3 font-playfair text-primary">Advanced Programming</h3>
+              <p className="text-gray-700 mb-4">Master modern programming languages and frameworks with our industry-aligned curriculum.</p>
               <a href="#" className="text-niat-500 font-medium flex items-center">
                 Learn more <ArrowRight className="ml-1 h-4 w-4" />
               </a>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-              <div className="w-14 h-14 bg-niat-50 rounded-full flex items-center justify-center mb-4">
+            <div className="bg-niat-50 p-6 rounded-lg shadow-md border border-niat-100 hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 bg-niat-200 rounded-full flex items-center justify-center mb-4">
                 <LampDesk className="h-8 w-8 text-niat-500" />
               </div>
-              <h3 className="text-xl font-bold mb-3 font-playfair">Artificial Intelligence</h3>
-              <p className="text-gray-600 mb-4">Develop cutting-edge AI applications with hands-on projects and expert mentorship.</p>
+              <h3 className="text-xl font-bold mb-3 font-playfair text-primary">Artificial Intelligence</h3>
+              <p className="text-gray-700 mb-4">Develop cutting-edge AI applications with hands-on projects and expert mentorship.</p>
               <a href="#" className="text-niat-500 font-medium flex items-center">
                 Learn more <ArrowRight className="ml-1 h-4 w-4" />
               </a>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-              <div className="w-14 h-14 bg-niat-50 rounded-full flex items-center justify-center mb-4">
+            <div className="bg-niat-50 p-6 rounded-lg shadow-md border border-niat-100 hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 bg-niat-200 rounded-full flex items-center justify-center mb-4">
                 <Briefcase className="h-8 w-8 text-niat-500" />
               </div>
-              <h3 className="text-xl font-bold mb-3 font-playfair">Career Accelerator</h3>
-              <p className="text-gray-600 mb-4">Get placed in top tech companies with our comprehensive placement preparation program.</p>
+              <h3 className="text-xl font-bold mb-3 font-playfair text-primary">Career Accelerator</h3>
+              <p className="text-gray-700 mb-4">Get placed in top tech companies with our comprehensive placement preparation program.</p>
               <a href="#" className="text-niat-500 font-medium flex items-center">
                 Learn more <ArrowRight className="ml-1 h-4 w-4" />
               </a>
@@ -307,7 +307,7 @@ const Index = () => {
         <DialogContent className="sm:max-w-[900px] p-0 overflow-hidden">
           <div className="flex flex-col md:flex-row">
             {/* Left Panel - Campaign Content */}
-            <div className="w-full md:w-1/2 bg-gradient-to-br from-primary to-primary/80 text-white p-8">
+            <div className="w-full md:w-1/2 bg-gradient-to-br from-niat-600 to-niat-500 text-white p-8">
               <div className="flex justify-center mb-6">
                 <img 
                   src="/lovable-uploads/ed96fbb9-fc0b-493c-a77f-41a96f947096.png" 
@@ -356,7 +356,7 @@ const Index = () => {
                       onClick={() => handleChangeCampaign(c.id)}
                       className={`px-3 py-1 rounded text-sm ${
                         activeCampaign === c.id 
-                          ? 'bg-white text-primary' 
+                          ? 'bg-white text-niat-500' 
                           : 'bg-white/20 hover:bg-white/30'
                       }`}
                     >
@@ -368,9 +368,9 @@ const Index = () => {
             </div>
             
             {/* Right Panel - Login Form */}
-            <div className="w-full md:w-1/2 p-6">
+            <div className="w-full md:w-1/2 p-6 bg-niat-50">
               <DialogHeader className="mb-4 text-left">
-                <DialogTitle className="text-2xl flex items-center gap-2 font-playfair">
+                <DialogTitle className="text-2xl flex items-center gap-2 font-playfair text-primary">
                   <LogIn className="h-5 w-5 text-primary" />
                   Login to Application Portal
                 </DialogTitle>
@@ -391,6 +391,7 @@ const Index = () => {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       maxLength={10}
+                      className="border-niat-200 focus:border-primary"
                     />
                   </div>
                   
@@ -412,6 +413,7 @@ const Index = () => {
                       value={otp}
                       onChange={(e) => setOtp(e.target.value)}
                       maxLength={4}
+                      className="border-niat-200 focus:border-primary"
                     />
                     <p className="text-sm text-gray-500 mt-1">
                       OTP sent to {phone}. 
@@ -425,16 +427,16 @@ const Index = () => {
                   </div>
                   
                   {/* OTP Tech Fact Card */}
-                  <div className="mt-6 bg-secondary/10 p-4 rounded-lg border border-secondary/20">
+                  <div className="mt-6 bg-niat-100 p-4 rounded-lg border border-niat-200">
                     <div className="flex items-start gap-3">
-                      <div className="bg-secondary/20 p-2 rounded-full">
+                      <div className="bg-secondary p-2 rounded-full">
                         <Lightbulb className="h-5 w-5 text-primary" />
                       </div>
                       <div>
                         <h3 className="font-medium text-primary">
                           {otpFacts[currentFactIndex].title}
                         </h3>
-                        <p className="text-sm text-gray-600 mt-1">
+                        <p className="text-sm text-gray-700 mt-1">
                           {otpFacts[currentFactIndex].description}
                         </p>
                       </div>
